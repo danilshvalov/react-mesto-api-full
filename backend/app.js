@@ -10,6 +10,13 @@ const {errorHandler} = require('./middlewares/error-handler');
 
 const app = express();
 
+// Чтобы не ломать текущую базу, сделал дополнительную, в которой можно проводить тесты безопасно
+const connectionLink = `mongodb://localhost:27017/mestodb${(process.env.MODE === 'TEST' ? '-test' : '')}`;
+
+// --------------------------------
+
+// --------------------------------
+
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000, // 15 минут
@@ -22,7 +29,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(thirdPartyLibErrorHandler);
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(connectionLink, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
