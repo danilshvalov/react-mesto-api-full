@@ -13,9 +13,12 @@ const app = express();
 // Чтобы не ломать текущую базу, сделал дополнительную, в которой можно проводить тесты безопасно
 const connectionLink = `mongodb://localhost:27017/mestodb${(process.env.MODE === 'TEST' ? '-test' : '')}`;
 
-// --------------------------------
-
-// --------------------------------
+mongoose.connect(connectionLink, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+});
 
 app.use(
   rateLimit({
@@ -28,13 +31,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(thirdPartyLibErrorHandler);
-
-mongoose.connect(connectionLink, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
 
 app.use(require('./routes/auth'));
 
