@@ -8,8 +8,6 @@ const {thirdPartyLibErrorHandler} = require('./utils/utils');
 const auth = require('./middlewares/auth');
 const {errorHandler} = require('./middlewares/error-handler');
 
-const {PORT = 3000} = process.env;
-
 const app = express();
 
 app.use(
@@ -42,4 +40,4 @@ app.use('*', (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT);
+module.exports = app;
