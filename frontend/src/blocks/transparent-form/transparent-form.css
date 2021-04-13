@@ -1,0 +1,11 @@
+.transparent-form {
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  background-color: transparent;
+
+  cursor: default;
+
+  margin: 0;
+  padding: 0;
+}

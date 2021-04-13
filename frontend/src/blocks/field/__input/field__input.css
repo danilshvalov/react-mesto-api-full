@@ -1,0 +1,9 @@
+.field__input {
+  width: 100%;
+
+  border: 0;
+  outline: none;
+
+  margin: 0;
+  padding: 0 0 10px;
+}

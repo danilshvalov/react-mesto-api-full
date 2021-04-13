@@ -1,0 +1,23 @@
+.field__error-message {
+  visibility: hidden;
+
+  width: 100%;
+
+  display: block;
+  height: 30px;
+
+  font-size: 11px;
+  line-height: 15px;
+
+  color: #FF0000;
+
+  margin: 5px 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .field__error-message {
+    font-size: 11px;
+    height: 18px;
+  }
+}

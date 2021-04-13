@@ -1,0 +1,30 @@
+.navbar__item {
+  display: flex;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  overflow: hidden;
+
+  margin-right: 15px;
+}
+
+.navbar__item:last-of-type {
+  width: max-content;
+  margin-right: 0;
+}
+
+@media screen and (max-width: 720px) {
+  .navbar__item {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .navbar__item {
+    display: none;
+  }
+}

@@ -1,0 +1,22 @@
+.info-tooltip__text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  word-wrap: break-word;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+
+  margin: 30px 0 0 0;
+}
+
+@media screen and (max-width: 500px) {
+  .info-tooltip__text {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

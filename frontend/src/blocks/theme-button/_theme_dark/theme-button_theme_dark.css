@@ -1,0 +1,8 @@
+.theme-button_theme_dark {
+  width: 30px;
+  height: 30px;
+
+  background-image: url(../../../images/sun.svg);;
+  background-color: transparent;
+  filter: invert(1);
+}

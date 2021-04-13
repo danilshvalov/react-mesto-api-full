@@ -1,0 +1,23 @@
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: calc(100vw - 40px);
+  min-height: 445px;
+
+  margin: 0 0 0 0;
+  padding: 0 35px;
+}
+
+@media screen and (max-width: 500px) {
+  .login__form {
+    margin: 40px 0px 0;
+    padding: 25px 22px;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .login__form {
+    margin: 0;
+  }
+}

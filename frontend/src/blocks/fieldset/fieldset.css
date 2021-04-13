@@ -1,0 +1,13 @@
+.fieldset {
+  display: flex;
+  flex-direction: column;
+
+  border: 0;
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,21 @@
+.navbar__email {
+  display: block;
+
+  max-width: 300px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 720px) {
+  .navbar__email {
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .navbar__email {
+    max-width: 100px;
+  }
+}

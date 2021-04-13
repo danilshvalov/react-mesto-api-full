@@ -1,0 +1,27 @@
+.navbar__container {
+  display: flex;
+  justify-content: flex-end;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  max-width: 400px;
+
+  text-align: right;
+
+  overflow: hidden;
+}
+
+@media screen and (max-width: 720px) {
+  .navbar__container {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .navbar__container {
+    flex-direction: column;
+    margin-right: 15px;
+  }
+}

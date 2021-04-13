@@ -1,0 +1,20 @@
+.popup_type_message {
+  display: block;
+
+  background-color: transparent;
+  cursor: default;
+
+  min-width: 300px;
+  min-height: 60px;
+
+  width: 25vw;
+  height: 10vh;
+
+  left: auto;
+  top: calc(100% - 140px);
+  right: 3px;
+  bottom: auto;
+
+  margin: 0;
+  padding: 0;
+}

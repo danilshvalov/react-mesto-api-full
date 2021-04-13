@@ -1,0 +1,31 @@
+.close-button {
+  background-image: url(../../images/add-button.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  transform: rotate(45deg);
+
+  min-width: 40px;
+  min-height: 40px;
+}
+
+@media screen and (max-width: 500px) {
+  .close-button {
+    min-width: 30px;
+    min-height: 30px;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-height: 420px) {
+  .close-button {
+    filter: invert(1);
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .close-button {
+    filter: invert(1);
+  }
+}

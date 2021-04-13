@@ -1,0 +1,27 @@
+.submit-button_disabled {
+  background-color: transparent;
+  color: #c4c4c4;
+
+  border-radius: 2px;
+  border: 1px solid #C4C4C4;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  pointer-events: none;
+
+  padding: 13px;
+}
+
+.submit-button_disabled:hover {
+  opacity: 1;
+}
+
+@media screen and (max-width: 500px) {
+  .submit-button_disabled {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

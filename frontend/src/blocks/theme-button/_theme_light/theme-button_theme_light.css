@@ -1,0 +1,7 @@
+.theme-button_theme_light {
+  width: 26px;
+  height: 26px;
+
+  background-image: url(../../../images/moon.svg);
+  background-color: transparent;
+}
