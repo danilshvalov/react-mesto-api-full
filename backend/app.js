@@ -14,8 +14,8 @@ const {requestLogger, errorLogger} = require('./middlewares/logger');
 const app = express();
 
 const {PORT = 3000} = process.env;
-const frontendLink = 'http://localhost:3001';
-const connectionLink = 'mongodb://localhost:27017/mestodb-test';
+const frontendLink = 'https://danilshvalov.mesto.nomoredomains.icu';
+const connectionLink = 'mongodb://localhost:27017/mestodb';
 
 mongoose.connect(connectionLink, {
   useNewUrlParser: true,

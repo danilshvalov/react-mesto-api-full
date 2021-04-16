@@ -9,4 +9,4 @@ module.exports.thirdPartyLibErrorHandler = (err, req, res, next) => {
   }
 };
 
-module.exports.secretKey = '4829756EA1464D5D756D7384D8996';
+module.exports.secretKey = (process.env.NODE_ENV !== 'production' ? 'super-secret-key' : process.env.JWT_SECRET);

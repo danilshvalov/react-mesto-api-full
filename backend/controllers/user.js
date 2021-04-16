@@ -7,7 +7,6 @@ const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
 const ConflictError = require('../errors/ConflictError');
 const InternalServerError = require('../errors/InternalServerError');
-// temp
 const {secretKey} = require('../utils/utils');
 
 // constants
