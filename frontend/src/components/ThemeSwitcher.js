@@ -1,9 +1,9 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { themeSwitcherClassNames } from "../utils/constants";
-import { addThemeAttrs } from "../utils/utils";
+import React from 'react';
+import ThemeContext from '../contexts/ThemeContext';
+import {themeSwitcherClassNames} from '../utils/constants';
+import {addThemeAttrs} from '../utils/utils';
 
-function ThemeSwitcher({ onThemeSwitch }) {
+function ThemeSwitcher({onThemeSwitch}) {
   // contexts
   const currentTheme = React.useContext(ThemeContext);
 
@@ -14,7 +14,7 @@ function ThemeSwitcher({ onThemeSwitch }) {
   });
 
   const handleThemeSwitch = () => {
-    onThemeSwitch(currentTheme === "dark" ? "light" : "dark");
+    onThemeSwitch(currentTheme === 'dark' ? 'light' : 'dark');
   };
 
   return (

@@ -1,10 +1,10 @@
-import React from "react";
-import Field from "./Field";
-import SubmitButton from "./SubmitButton";
-import Form from "./Form";
-import { loginSettings } from "../utils/constants";
-import ColoredTitle from "./ColoredTitle";
-import Fieldset from "./Fieldset";
+import React from 'react';
+import Field from './Field';
+import SubmitButton from './SubmitButton';
+import Form from './Form';
+import {loginSettings} from '../utils/constants';
+import ColoredTitle from './ColoredTitle';
+import Fieldset from './Fieldset';
 
 function Login(props) {
   // constants
@@ -18,21 +18,21 @@ function Login(props) {
   // states
   const [isValid, setValid] = React.useState(false);
   const [emailInput, setEmailInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [passwordInput, setPasswordInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [submitButtonText, setSubmitButtonText] = React.useState(
-    attributes.submitButtonDefaultText
+    attributes.submitButtonDefaultText,
   );
 
   // effects
   React.useEffect(() => {
     const inputs = [emailInput, passwordInput];
-    setValid(inputs.every(({ isValid }) => isValid));
+    setValid(inputs.every(({isValidInput}) => isValidInput));
   }, [passwordInput, emailInput]);
 
   // handlers
@@ -41,7 +41,7 @@ function Login(props) {
     if (isValid) {
       setSubmitButtonText(attributes.submitButtonLoadingText);
       props
-        .onLogin({ email: emailInput.value, password: passwordInput.value })
+        .onLogin({email: emailInput.value, password: passwordInput.value})
         .finally(() => {
           setSubmitButtonText(attributes.submitButtonDefaultText);
         });

@@ -1,7 +1,7 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { footerClassNames } from "../utils/constants";
-import { addThemeAttrs } from "../utils/utils";
+import React from 'react';
+import ThemeContext from '../contexts/ThemeContext';
+import {footerClassNames} from '../utils/constants';
+import {addThemeAttrs} from '../utils/utils';
 
 function Footer() {
   // contexts

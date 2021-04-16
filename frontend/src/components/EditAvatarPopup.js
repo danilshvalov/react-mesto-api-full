@@ -1,14 +1,14 @@
-import React from "react";
-import Field from "./Field";
-import PopupWithForm from "./PopupWithForm";
-import SubmitButton from "./SubmitButton";
+import React from 'react';
+import Field from './Field';
+import PopupWithForm from './PopupWithForm';
+import SubmitButton from './SubmitButton';
 import {
   colorFormClassNames,
   editAvatarPopupSettings,
-} from "../utils/constants";
-import Fieldset from "./Fieldset";
+} from '../utils/constants';
+import Fieldset from './Fieldset';
 
-function EditAvatarPopup({ onClose, isOpen, onUpdateAvatar }) {
+function EditAvatarPopup({onClose, isOpen, onUpdateAvatar}) {
   // constants
   const {
     defaultText: defaultSubmitButtonText,
@@ -17,12 +17,12 @@ function EditAvatarPopup({ onClose, isOpen, onUpdateAvatar }) {
 
   // states
   const [avatarInput, setAvatarInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [isValid, setValid] = React.useState(false);
   const [submitButtonText, setSubmitButtonText] = React.useState(
-    defaultSubmitButtonText
+    defaultSubmitButtonText,
   );
 
   // effects
@@ -35,7 +35,7 @@ function EditAvatarPopup({ onClose, isOpen, onUpdateAvatar }) {
     evt.preventDefault();
     if (isValid) {
       setSubmitButtonText(loadingSubmitButtonText);
-      onUpdateAvatar({ avatar: avatarInput.value }).finally(() => {
+      onUpdateAvatar({avatar: avatarInput.value}).finally(() => {
         setSubmitButtonText(defaultSubmitButtonText);
       });
     }

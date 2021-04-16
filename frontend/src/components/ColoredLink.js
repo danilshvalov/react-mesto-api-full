@@ -1,7 +1,7 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { addThemeAttrs, getOnlyDOMProps } from "../utils/utils";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import {NavLink} from 'react-router-dom';
+import ThemeContext from '../contexts/ThemeContext';
+import {addThemeAttrs, getOnlyDOMProps} from '../utils/utils';
 
 const ColoredLink = React.memo((props) => {
   // contexts

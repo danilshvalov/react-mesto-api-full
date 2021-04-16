@@ -1,10 +1,10 @@
-import React from "react";
-import logo from "../images/header-logo.svg";
-import ThemeSwitcher from "./ThemeSwitcher";
-import ThemeContext from "../contexts/ThemeContext";
-import { addThemeAttrs } from "../utils/utils";
-import { headerClassNames } from "../utils/constants";
-import Navbar from "./Navbar";
+import React from 'react';
+import logo from '../images/header-logo.svg';
+import ThemeSwitcher from './ThemeSwitcher';
+import ThemeContext from '../contexts/ThemeContext';
+import {addThemeAttrs} from '../utils/utils';
+import {headerClassNames} from '../utils/constants';
+import Navbar from './Navbar';
 
 function Header(props) {
   // contexts

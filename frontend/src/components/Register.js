@@ -1,11 +1,11 @@
-import React from "react";
-import Field from "./Field";
-import SubmitButton from "./SubmitButton";
-import Form from "./Form";
-import { linkPaths, registerSettings } from "../utils/constants";
-import ColoredLink from "./ColoredLink";
-import ColoredTitle from "./ColoredTitle";
-import Fieldset from "./Fieldset";
+import React from 'react';
+import Field from './Field';
+import SubmitButton from './SubmitButton';
+import Form from './Form';
+import {linkPaths, registerSettings} from '../utils/constants';
+import ColoredLink from './ColoredLink';
+import ColoredTitle from './ColoredTitle';
+import Fieldset from './Fieldset';
 
 function Register(props) {
   // constants
@@ -19,21 +19,21 @@ function Register(props) {
   // states
   const [isValid, setValid] = React.useState(false);
   const [emailInput, setEmailInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [passwordInput, setPasswordInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [submitButtonText, setSubmitButtonText] = React.useState(
-    attributes.submitButtonDefaultText
+    attributes.submitButtonDefaultText,
   );
 
   // effects
   React.useEffect(() => {
     const inputs = [emailInput, passwordInput];
-    setValid(inputs.every(({ isValid }) => isValid));
+    setValid(inputs.every(({isValidInput}) => isValidInput));
   }, [passwordInput, emailInput]);
 
   // handlers

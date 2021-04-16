@@ -1,8 +1,8 @@
-import React from "react";
-import Popup from "./Popup";
-import Form from "./Form";
-import { popupClassNames } from "../utils/constants";
-import ColoredTitle from "./ColoredTitle";
+import React from 'react';
+import Popup from './Popup';
+import Form from './Form';
+import {popupClassNames} from '../utils/constants';
+import ColoredTitle from './ColoredTitle';
 
 function PopupWithForm({
   name,

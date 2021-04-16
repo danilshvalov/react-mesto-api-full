@@ -1,12 +1,14 @@
-import React from "react";
-import CurrentUserContext from "../contexts/CurrentUserContext";
-import ThemeContext from "../contexts/ThemeContext";
-import { cardClassNames } from "../utils/constants";
-import { addThemeAttrs } from "../utils/utils";
-import PushButton from "./PushButton";
-import notFoundImagePlug from "../images/not-found.svg";
+import React from 'react';
+import CurrentUserContext from '../contexts/CurrentUserContext';
+import ThemeContext from '../contexts/ThemeContext';
+import {cardClassNames} from '../utils/constants';
+import {addThemeAttrs} from '../utils/utils';
+import PushButton from './PushButton';
+import notFoundImagePlug from '../images/not-found.svg';
 
-function Card({ card, onCardClick, onCardLike, onCardDelete }) {
+function Card({
+  card, onCardClick, onCardLike, onCardDelete,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
   const currentTheme = React.useContext(ThemeContext);
 
@@ -18,12 +20,12 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const deleteButtonClassName = `${addThemeAttrs({
     theme: currentTheme,
     classList: cardClassNames.deleteButton,
-  })} ${isOwn ? "" : cardClassNames.deleteButtonHiddenClass}`;
+  })} ${isOwn ? '' : cardClassNames.deleteButtonHiddenClass}`;
 
   const likeButtonClassName = `${addThemeAttrs({
     theme: currentTheme,
     classList: cardClassNames.likeButton,
-  })} ${isLiked ? cardClassNames.likeButtonActiveClass : ""}`;
+  })} ${isLiked ? cardClassNames.likeButtonActiveClass : ''}`;
 
   const elementClassName = addThemeAttrs({
     theme: currentTheme,

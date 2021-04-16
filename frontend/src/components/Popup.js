@@ -1,10 +1,12 @@
-import React from "react";
-import PushButton from "./PushButton";
-import { popupClassNames } from "../utils/constants";
+import React from 'react';
+import PushButton from './PushButton';
+import {popupClassNames} from '../utils/constants';
 
-function Popup({ name, children, onClose, isOpen }) {
+function Popup({
+  name, children, onClose, isOpen,
+}) {
   // constants
-  const escapeKeyCode = "Escape";
+  const escapeKeyCode = 'Escape';
 
   // refs
   const popupWrapperRef = React.useRef();
@@ -14,8 +16,8 @@ function Popup({ name, children, onClose, isOpen }) {
 
   const handleClose = (evt) => {
     if (
-      evt.target === popupWrapperRef.current ||
-      evt.target === popupContainerRef.current
+      evt.target === popupWrapperRef.current
+      || evt.target === popupContainerRef.current
     ) {
       onClose();
     }
@@ -26,18 +28,18 @@ function Popup({ name, children, onClose, isOpen }) {
     const escapeButtonHandler = (evt) => {
       if (evt.key === escapeKeyCode) {
         onClose();
-        document.removeEventListener("keydown", escapeButtonHandler);
+        document.removeEventListener('keydown', escapeButtonHandler);
       }
     };
     if (isOpen) {
-      document.addEventListener("keydown", escapeButtonHandler);
+      document.addEventListener('keydown', escapeButtonHandler);
     }
   }, [isOpen, onClose]);
   return (
     <div
       className={`${popupClassNames.popup} ${
         popupClassNames.popup
-      }_type_${name} ${isOpen ? popupClassNames.popupOpenedClass : ""}`}
+      }_type_${name} ${isOpen ? popupClassNames.popupOpenedClass : ''}`}
       ref={popupWrapperRef}
       onClick={handleClose}
     >

@@ -1,7 +1,9 @@
-import Popup from "./Popup";
-import { imagePopupClassNames } from "../utils/constants";
+import Popup from './Popup';
+import {imagePopupClassNames} from '../utils/constants';
 
-function ImagePopup({ name, link, isOpen, onClose }) {
+function ImagePopup({
+  name, link, isOpen, onClose,
+}) {
   return (
     <Popup name={name} isOpen={isOpen} onClose={onClose}>
       <div className={imagePopupClassNames.picture}>

@@ -1,10 +1,10 @@
-import React from "react";
-import Popup from "./Popup";
-import successLogo from "../images/success.svg";
-import failureLogo from "../images/failure.svg";
-import { infoTooltipClassNames } from "../utils/constants";
-import { addThemeAttrs } from "../utils/utils";
-import ThemeContext from "../contexts/ThemeContext";
+import React from 'react';
+import Popup from './Popup';
+import successLogo from '../images/success.svg';
+import failureLogo from '../images/failure.svg';
+import {infoTooltipClassNames} from '../utils/constants';
+import {addThemeAttrs} from '../utils/utils';
+import ThemeContext from '../contexts/ThemeContext';
 
 function InfoTooltip(props) {
   // contexts

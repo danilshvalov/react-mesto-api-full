@@ -1,9 +1,9 @@
-import React from "react";
-import defaultAvatar from "../images/avatar.svg";
-import Card from "./Card";
-import CurrentUserContext from "../contexts/CurrentUserContext";
-import ThemeContext from "../contexts/ThemeContext";
-import PushButton from "./PushButton";
+import React from 'react';
+import defaultAvatar from '../images/avatar.svg';
+import Card from './Card';
+import CurrentUserContext from '../contexts/CurrentUserContext';
+import ThemeContext from '../contexts/ThemeContext';
+import PushButton from './PushButton';
 
 function Main({
   cards,
@@ -49,8 +49,7 @@ function Main({
       </section>
 
       <section className={`elements elements_theme_${currentTheme}`}>
-        {cards.map((data) => {
-          return (
+        {cards.map((data) => (
             <Card
               card={data}
               key={data._id}
@@ -58,8 +57,7 @@ function Main({
               onCardClick={onCardClick}
               onCardDelete={onCardDelete}
             />
-          );
-        })}
+        ))}
       </section>
     </main>
   );

@@ -1,14 +1,16 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({baseUrl, headers}) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
-  sendRequest({ path, method = "GET", body, errorMessage }) {
+  sendRequest({
+    path, method = 'GET', body, errorMessage,
+  }) {
     return fetch(new URL(path, this._baseUrl), {
-      method: method,
+      method,
       headers: this._headers,
-      body: body,
+      body,
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -19,44 +21,44 @@ class Api {
 
   getInitialCards() {
     return this.sendRequest({
-      path: "cards",
-      errorMessage: "При запросе карточек произошла ошибка",
+      path: 'cards',
+      errorMessage: 'При запросе карточек произошла ошибка',
     });
   }
 
-  addPlace({ name, link }) {
+  addPlace({name, link}) {
     return this.sendRequest({
-      path: "cards",
-      method: "POST",
+      path: 'cards',
+      method: 'POST',
       body: JSON.stringify({
         name,
         link,
       }),
-      errorMessage: "При добавлении карточки произошла ошибка",
+      errorMessage: 'При добавлении карточки произошла ошибка',
     });
   }
 
   deleteCard(id) {
     return this.sendRequest({
       path: `cards/${id}`,
-      method: "DELETE",
-      errorMessage: "При удалении карточки произошла ошибка",
+      method: 'DELETE',
+      errorMessage: 'При удалении карточки произошла ошибка',
     });
   }
 
   setLike(id) {
     return this.sendRequest({
       path: `cards/likes/${id}`,
-      method: "PUT",
-      errorMessage: "При попытке поставить like произошла ошибка",
+      method: 'PUT',
+      errorMessage: 'При попытке поставить like произошла ошибка',
     });
   }
 
   removeLike(id) {
     return this.sendRequest({
       path: `cards/likes/${id}`,
-      method: "DELETE",
-      errorMessage: "При попытке убрать like произошла ошибка",
+      method: 'DELETE',
+      errorMessage: 'При попытке убрать like произошла ошибка',
     });
   }
 
@@ -66,42 +68,41 @@ class Api {
 
   getUserInfo() {
     return this.sendRequest({
-      path: "users/me",
-      errorMessage: "При получении данных профиля произошла ошибка",
+      path: 'users/me',
+      errorMessage: 'При получении данных профиля произошла ошибка',
     });
   }
 
-  setUserInfo({ name, about }) {
+  setUserInfo({name, about}) {
     return this.sendRequest({
-      path: "users/me",
-      method: "PATCH",
+      path: 'users/me',
+      method: 'PATCH',
       body: JSON.stringify({
-        name: name,
-        about: about,
+        name,
+        about,
       }),
-      errorMessage: "При редактировании профиля произошла ошибка",
+      errorMessage: 'При редактировании профиля произошла ошибка',
     });
   }
 
   changeAvatar(link) {
     return this.sendRequest({
-      path: "users/me/avatar",
-      method: "PATCH",
+      path: 'users/me/avatar',
+      method: 'PATCH',
       body: JSON.stringify({
         avatar: link,
       }),
-      errorMessage: "При обновлении аватара произошла ошибка",
+      errorMessage: 'При обновлении аватара произошла ошибка',
     });
   }
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-19/",
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19/',
   headers: {
-    authorization: "68d238d8-54dd-4a8c-9a47-e308386a3ea7",
-    "Content-Type": "application/json; charset=utf-8",
+    authorization: '68d238d8-54dd-4a8c-9a47-e308386a3ea7',
+    'Content-Type': 'application/json; charset=utf-8',
   },
 });
-
 
 export default api;

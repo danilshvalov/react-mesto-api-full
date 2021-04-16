@@ -1,6 +1,6 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { getOnlyDOMProps, addThemeAttrs } from "../utils/utils";
+import React from 'react';
+import ThemeContext from '../contexts/ThemeContext';
+import {getOnlyDOMProps, addThemeAttrs} from '../utils/utils';
 
 const Field = React.memo((props) => {
   // contexts
@@ -19,7 +19,7 @@ const Field = React.memo((props) => {
   // states
   const [isValid, setValid] = React.useState(false);
   const [value, setValue] = React.useState(props.defaultValue);
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState('');
   const [isErrorVisible, setErrorVisible] = React.useState(false);
 
   // refs
@@ -36,12 +36,12 @@ const Field = React.memo((props) => {
     }
   }, [props.isVisible, props.defaultValue]);
   React.useEffect(() => {
-    props.onInput({ value, isValid });
+    props.onInput({value, isValid});
   }, [value, isValid, props]);
 
   // handlers
   const handleInput = (evt) => {
-    const target = evt.target;
+    const {target} = evt;
     setValue(target.value);
     setValid(target.validity.valid);
     setErrorVisible(!target.validity.valid);
@@ -61,7 +61,7 @@ const Field = React.memo((props) => {
       />
       <span
         className={`field__error-message ${
-          isErrorVisible ? "field__error-message_visible" : ""
+          isErrorVisible ? 'field__error-message_visible' : ''
         }`}
         id={`${props.name}-input-error`}
       >

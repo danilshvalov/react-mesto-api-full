@@ -1,12 +1,14 @@
-import React from "react";
+import React from 'react';
 import {
   colorFormClassNames,
   confirmPopupClassNames,
-} from "../utils/constants";
-import PopupWithForm from "./PopupWithForm";
-import SubmitButton from "./SubmitButton";
+} from '../utils/constants';
+import PopupWithForm from './PopupWithForm';
+import SubmitButton from './SubmitButton';
 
-function ConfirmPopup({ onClose, isOpen, onCardDelete, card }) {
+function ConfirmPopup({
+  onClose, isOpen, onCardDelete, card,
+}) {
   // constants
   const {
     defaultText: defaultSubmitButtonText,
@@ -15,7 +17,7 @@ function ConfirmPopup({ onClose, isOpen, onCardDelete, card }) {
 
   // states
   const [submitButtonText, setSubmitButtonText] = React.useState(
-    defaultSubmitButtonText
+    defaultSubmitButtonText,
   );
 
   // handlers

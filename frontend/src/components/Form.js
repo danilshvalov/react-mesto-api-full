@@ -1,6 +1,6 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { addThemeAttrs, getOnlyDOMProps } from "../utils/utils";
+import React from 'react';
+import ThemeContext from '../contexts/ThemeContext';
+import {addThemeAttrs, getOnlyDOMProps} from '../utils/utils';
 
 function Form(props) {
   // contexts

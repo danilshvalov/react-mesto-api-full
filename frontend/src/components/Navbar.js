@@ -1,7 +1,7 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import { navbarClassNames, linkPaths } from "../utils/constants";
-import ColoredLink from "./ColoredLink";
+import React from 'react';
+import {Route} from 'react-router-dom';
+import {navbarClassNames, linkPaths} from '../utils/constants';
+import ColoredLink from './ColoredLink';
 
 function Navbar(props) {
   return (

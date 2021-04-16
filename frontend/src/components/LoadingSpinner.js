@@ -1,7 +1,7 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { addThemeAttrs } from "../utils/utils";
-import { loadingSpinnerClassName } from "../utils/constants";
+import React from 'react';
+import ThemeContext from '../contexts/ThemeContext';
+import {addThemeAttrs} from '../utils/utils';
+import {loadingSpinnerClassName} from '../utils/constants';
 
 function LoadingSpinner() {
   // contexts

@@ -1,6 +1,6 @@
-import React from "react";
-import ThemeContext from "../contexts/ThemeContext";
-import { getOnlyDOMProps, addThemeAttrs } from "../utils/utils";
+import React from 'react';
+import ThemeContext from '../contexts/ThemeContext';
+import {getOnlyDOMProps, addThemeAttrs} from '../utils/utils';
 
 const PushButton = React.memo((props) => {
   const currentTheme = React.useContext(ThemeContext);

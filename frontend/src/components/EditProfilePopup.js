@@ -1,15 +1,15 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "../contexts/CurrentUserContext";
-import Field from "./Field";
-import SubmitButton from "./SubmitButton";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
+import CurrentUserContext from '../contexts/CurrentUserContext';
+import Field from './Field';
+import SubmitButton from './SubmitButton';
 import {
   colorFormClassNames,
   editProfilePopupSettings,
-} from "../utils/constants";
-import Fieldset from "./Fieldset";
+} from '../utils/constants';
+import Fieldset from './Fieldset';
 
-function EditProfilePopup({ onClose, isOpen, onUpdateUser }) {
+function EditProfilePopup({onClose, isOpen, onUpdateUser}) {
   // constants
   const {
     defaultText: defaultSubmitButtonText,
@@ -30,12 +30,12 @@ function EditProfilePopup({ onClose, isOpen, onUpdateUser }) {
   });
   const [isValid, setValid] = React.useState(false);
   const [submitButtonText, setSubmitButtonText] = React.useState(
-    defaultSubmitButtonText
+    defaultSubmitButtonText,
   );
 
   React.useEffect(() => {
     const inputs = [nameInput, descriptionInput];
-    setValid(inputs.every(({ isValid }) => isValid));
+    setValid(inputs.every(({isValidInput}) => isValidInput));
   }, [nameInput, descriptionInput]);
 
   // handlers
@@ -78,7 +78,7 @@ function EditProfilePopup({ onClose, isOpen, onUpdateUser }) {
           inputClass={colorFormClassNames.input}
           onInput={setNameInput}
           isVisible={isOpen}
-          defaultValue={currentUser.name ? currentUser.name : ""}
+          defaultValue={currentUser.name ? currentUser.name : ''}
         />
         <Field
           {...editProfilePopupSettings.descriptionInput}
@@ -86,7 +86,7 @@ function EditProfilePopup({ onClose, isOpen, onUpdateUser }) {
           inputClass={colorFormClassNames.input}
           onInput={setDescriptionInput}
           isVisible={isOpen}
-          defaultValue={currentUser.about ? currentUser.about : ""}
+          defaultValue={currentUser.about ? currentUser.about : ''}
         />
       </Fieldset>
     </PopupWithForm>

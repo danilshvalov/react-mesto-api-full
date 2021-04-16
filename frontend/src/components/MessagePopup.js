@@ -1,10 +1,10 @@
-import React from "react";
-import Popup from "./Popup";
-import { messagePopupClassNames } from "../utils/constants";
-import { addThemeAttrs } from "../utils/utils";
-import ThemeContext from "../contexts/ThemeContext";
+import React from 'react';
+import Popup from './Popup';
+import {messagePopupClassNames} from '../utils/constants';
+import {addThemeAttrs} from '../utils/utils';
+import ThemeContext from '../contexts/ThemeContext';
 
-function MessagePopup({ message, onClose, isOpen }) {
+function MessagePopup({message, onClose, isOpen}) {
   // contexts
   const currentTheme = React.useContext(ThemeContext);
 

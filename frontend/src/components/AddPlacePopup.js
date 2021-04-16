@@ -1,11 +1,11 @@
-import React from "react";
-import Field from "./Field";
-import Fieldset from "./Fieldset";
-import PopupWithForm from "./PopupWithForm";
-import SubmitButton from "./SubmitButton";
-import { addPlacePopupSettings, colorFormClassNames } from "../utils/constants";
+import React from 'react';
+import Field from './Field';
+import Fieldset from './Fieldset';
+import PopupWithForm from './PopupWithForm';
+import SubmitButton from './SubmitButton';
+import {addPlacePopupSettings, colorFormClassNames} from '../utils/constants';
 
-function AddPlacePopup({ onClose, isOpen, onAddPlace }) {
+function AddPlacePopup({onClose, isOpen, onAddPlace}) {
   // constants
   const {
     defaultText: defaultSubmitButtonText,
@@ -14,22 +14,22 @@ function AddPlacePopup({ onClose, isOpen, onAddPlace }) {
 
   // states
   const [titleInput, setTitleInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [linkInput, setLinkInput] = React.useState({
-    value: "",
+    value: '',
     isValid: false,
   });
   const [isValid, setValid] = React.useState(false);
   const [submitButtonText, setSubmitButtonText] = React.useState(
-    defaultSubmitButtonText
+    defaultSubmitButtonText,
   );
 
   // effects
   React.useEffect(() => {
     const inputs = [titleInput, linkInput];
-    setValid(inputs.every(({ isValid }) => isValid));
+    setValid(inputs.every(({isValidInput}) => isValidInput));
   }, [titleInput, linkInput]);
 
   // handlers
@@ -37,10 +37,10 @@ function AddPlacePopup({ onClose, isOpen, onAddPlace }) {
     evt.preventDefault();
     if (isValid) {
       setSubmitButtonText(loadingSubmitButtonText);
-      onAddPlace({ name: titleInput.value, link: linkInput.value }).finally(
+      onAddPlace({name: titleInput.value, link: linkInput.value}).finally(
         () => {
           setSubmitButtonText(defaultSubmitButtonText);
-        }
+        },
       );
     }
   };
