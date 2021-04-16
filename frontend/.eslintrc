@@ -12,7 +12,8 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "import/no-named-as-default": "off",
-    "import/no-named-as-default-member": "off"
+    "import/no-named-as-default-member": "off",
+    "linebreak-style": "off"
   },
   "plugins": ["react", "import", "jsx-a11y"],
   "parser": "babel-eslint",
