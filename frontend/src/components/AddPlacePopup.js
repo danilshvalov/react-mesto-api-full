@@ -29,7 +29,7 @@ function AddPlacePopup({onClose, isOpen, onAddPlace}) {
   // effects
   React.useEffect(() => {
     const inputs = [titleInput, linkInput];
-    setValid(inputs.every(({isValidInput}) => isValidInput));
+    setValid(inputs.every(({isValid}) => isValid));
   }, [titleInput, linkInput]);
 
   // handlers

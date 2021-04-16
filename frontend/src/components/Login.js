@@ -32,7 +32,7 @@ function Login(props) {
   // effects
   React.useEffect(() => {
     const inputs = [emailInput, passwordInput];
-    setValid(inputs.every(({isValidInput}) => isValidInput));
+    setValid(inputs.every(({isValid}) => isValid));
   }, [passwordInput, emailInput]);
 
   // handlers

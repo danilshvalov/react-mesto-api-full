@@ -81,6 +81,7 @@ function App() {
   };
 
   const updateToken = (data) => {
+    console.log(data.cookie);
     localStorage.setItem('jwt', data.token);
   };
 
@@ -223,20 +224,25 @@ function App() {
     };
 
     const handleTokenCheck = () => {
+      setLoggedIn(true);
+      loadApiData();
+      setApiDataLoading(false);
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
-        auth
-          .checkToken(jwt)
-          .then((res) => {
-            setLoggedIn(true);
-            setEmail(res.data.email);
-            loadApiData();
-          })
-          .catch(() => {
-            localStorage.removeItem('jwt');
-            history.push(linkPaths.loginPage);
-            setApiDataLoading(false);
-          });
+        loadApiData();
+        // loadApiData();
+        // auth
+        //   .checkToken(jwt)
+        //   .then((res) => {
+        //     setLoggedIn(true);
+        //     setEmail(res.data.email);
+        //     loadApiData();
+        //   })
+        //   .catch(() => {
+        //     localStorage.removeItem('jwt');
+        //     history.push(linkPaths.loginPage);
+        //     setApiDataLoading(false);
+        //   });
       } else {
         setLoggedIn(false);
         setApiDataLoading(false);

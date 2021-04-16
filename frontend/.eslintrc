@@ -4,6 +4,7 @@
     "no-underscore-dangle": "off",
     "object-curly-spacing": ["error", "never"],
     "func-names": "off",
+    "no-shadow": "off",
     "consistent-return": "off",
     "no-param-reassign": "off",
     "class-methods-use-this": "off",

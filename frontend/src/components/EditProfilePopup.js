@@ -35,7 +35,7 @@ function EditProfilePopup({onClose, isOpen, onUpdateUser}) {
 
   React.useEffect(() => {
     const inputs = [nameInput, descriptionInput];
-    setValid(inputs.every(({isValidInput}) => isValidInput));
+    setValid(inputs.every(({isValid}) => isValid));
   }, [nameInput, descriptionInput]);
 
   // handlers

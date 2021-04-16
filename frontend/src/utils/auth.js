@@ -20,6 +20,7 @@ class Auth {
       method,
       headers: {...this._headers, ...headers},
       body,
+      credentials: 'include',
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -89,8 +90,16 @@ class Auth {
   }
 }
 
+// const auth = new Auth({
+//   baseUrl: 'https://api.danilshvalov.mesto.nomoredomains.icu/',
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'Access-Control-Allow-Origin': 'http://api.danilshvalov.mesto.nomoredomains.icu/',
+//   },
+// });
+
 const auth = new Auth({
-  baseUrl: 'https://auth.nomoreparties.co/',
+  baseUrl: 'http://localhost:3000/',
   headers: {
     'Content-Type': 'application/json',
   },

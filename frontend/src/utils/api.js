@@ -11,6 +11,7 @@ class Api {
       method,
       headers: this._headers,
       body,
+      credentials: 'include',
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -98,9 +99,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19/',
+  baseUrl: 'http://localhost:3000/',
   headers: {
-    authorization: '68d238d8-54dd-4a8c-9a47-e308386a3ea7',
     'Content-Type': 'application/json; charset=utf-8',
   },
 });

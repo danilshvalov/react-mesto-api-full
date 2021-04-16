@@ -2,7 +2,7 @@
   "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://danilshvalov.github.io/mesto-react",
+
   "author": {
     "name": "Danil Shvalov",
     "email": "daniil.shvalov@gmail.com"
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build & scp -r ./build/* danilshvalov@84.201.148.72:/home/danilshvalov/react-mesto-api-full/frontend/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
