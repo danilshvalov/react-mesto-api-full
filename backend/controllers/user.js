@@ -137,3 +137,11 @@ module.exports.login = (req, res, next) => {
     })
     .catch(next);
 };
+
+module.exports.logout = (req, res, next) => {
+  try {
+    res.clearCookie('jwt').end();
+  } catch (err) {
+    next(err);
+  }
+};

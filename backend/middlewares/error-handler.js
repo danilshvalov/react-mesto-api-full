@@ -6,6 +6,7 @@ const getCelebrateErrorMessage = (err) => {
 };
 
 module.exports.errorHandler = (err, req, res, next) => {
+  console.log(err);
   if (isCelebrateError(err)) {
     res.status(400).send({message: getCelebrateErrorMessage(err)});
   } else if (err.name === 'CastError') {
