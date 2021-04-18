@@ -13,8 +13,8 @@ function Card({
   const currentTheme = React.useContext(ThemeContext);
 
   // bool variables
-  const isOwn = card.owner._id === currentUser._id;
-  const isLiked = card.likes.some((user) => user._id === currentUser._id);
+  const isOwn = card.owner === currentUser._id;
+  const isLiked = card.likes.some((id) => id === currentUser._id);
 
   // classes
   const deleteButtonClassName = `${addThemeAttrs({

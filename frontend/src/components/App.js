@@ -2,6 +2,9 @@ import React from 'react';
 import {
   Redirect, Route, Switch, useHistory,
 } from 'react-router-dom';
+
+import {linkPaths, loginSettings, registerSettings} from '../utils/constants';
+import auth from '../utils/auth';
 import api from '../utils/api';
 import Footer from './Footer';
 import Header from './Header';
@@ -19,10 +22,8 @@ import ProtectedRoute from './ProtectedRoute';
 import ThemeContext from '../contexts/ThemeContext';
 import {addThemeAttrs} from '../utils/utils';
 import * as theme from '../utils/theme';
-import auth from '../utils/auth';
 import Login from './Login';
 import InfoTooltip from './InfoTooltip';
-import {linkPaths, loginSettings, registerSettings} from '../utils/constants';
 
 function App() {
   // states
@@ -80,11 +81,6 @@ function App() {
     setImagePopupOpen(false);
   };
 
-  const updateToken = (data) => {
-    console.log(data.cookie);
-    localStorage.setItem('jwt', data.token);
-  };
-
   const openInfoTooltip = ({message, redirectPath, isSuccess}) => {
     setActionSuccess(isSuccess);
     setInfoTooltipData({message, redirectPath});
@@ -94,15 +90,14 @@ function App() {
   // auth-handlers
   const handleLogin = (data) => auth
     .authorize(data)
-    .then((res) => {
-      updateToken(res);
+    .then(() => {
       setLoggedIn(true);
       setEmail(data.email);
       openInfoTooltip({
         message: loginSettings.attributes.successMessage,
-        redirectPath: linkPaths.mainPage,
         isSuccess: true,
       });
+      history.push(linkPaths.mainPage);
     })
     .catch((errorMessage) => {
       openInfoTooltip({message: errorMessage, isSuccess: false});
@@ -110,8 +105,7 @@ function App() {
 
   const handleRegister = (data) => auth
     .register(data)
-    .then((res) => {
-      updateToken(res);
+    .then(() => {
       openInfoTooltip({
         message: registerSettings.attributes.successMessage,
         redirectPath: linkPaths.loginPage,
@@ -127,7 +121,7 @@ function App() {
     });
 
   const handleSignOut = () => {
-    localStorage.removeItem('jwt');
+    auth.logout();
     setLoggedIn(false);
     history.push(linkPaths.loginPage);
   };
@@ -136,6 +130,9 @@ function App() {
   const handleApiError = (promise, callback) => promise
     .then((data) => callback(data))
     .catch((error) => {
+      if (typeof error === 'string' && error.includes('401')) {
+        return; // если ошибка доступа - молчим и переводим на другую страничку
+      }
       if (error instanceof TypeError) {
         setPopupMessage(
           'Потеряно соединение с сервером, повторите попытку позднее',
@@ -192,7 +189,7 @@ function App() {
     setImagePopupOpen(true);
   };
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     handleApiError(api.changeLikeCardStatus(card._id, !isLiked), (newCard) => {
       setCards(
         cards.map((oldCard) => (oldCard._id === card._id ? newCard : oldCard)),
@@ -212,42 +209,36 @@ function App() {
   // effects
   React.useEffect(() => {
     const loadApiData = () => {
-      handleApiError(
-        Promise.all([api.getUserInfo(), api.getInitialCards()]),
-        (result) => {
-          const [userInfo, initialCards] = result;
-          setCurrentUser(userInfo);
-          setCards(initialCards);
-          setApiDataLoading(false);
-        },
-      );
-    };
-
-    const handleTokenCheck = () => {
-      setLoggedIn(true);
-      loadApiData();
-      setApiDataLoading(false);
-      const jwt = localStorage.getItem('jwt');
-      if (jwt) {
-        loadApiData();
-        // loadApiData();
-        // auth
-        //   .checkToken(jwt)
-        //   .then((res) => {
-        //     setLoggedIn(true);
-        //     setEmail(res.data.email);
-        //     loadApiData();
-        //   })
-        //   .catch(() => {
-        //     localStorage.removeItem('jwt');
-        //     history.push(linkPaths.loginPage);
-        //     setApiDataLoading(false);
-        //   });
+      if (history.location.pathname === linkPaths.mainPage) {
+        handleApiError(
+          Promise.all([api.getUserInfo(), api.getInitialCards()]),
+          (result) => {
+            const [userInfo, initialCards] = result;
+            setCurrentUser(userInfo);
+            setCards(initialCards);
+            setApiDataLoading(false);
+          },
+        );
       } else {
-        setLoggedIn(false);
         setApiDataLoading(false);
       }
     };
+
+    const handleTokenCheck = () => {
+      auth
+        .checkToken()
+        .then((res) => {
+          setLoggedIn(true);
+          setEmail(res.email);
+          loadApiData();
+        })
+        .catch(() => {
+          history.push(linkPaths.loginPage);
+          setApiDataLoading(false);
+          setLoggedIn(false);
+        });
+    };
+
     handleTokenCheck();
   }, [isLoggedIn, history]);
 
@@ -277,7 +268,7 @@ function App() {
               <Switch>
                 <ProtectedRoute
                   exact
-                  path="/"
+                  path={linkPaths.mainPage}
                   loggedIn={isLoggedIn}
                   cards={cards}
                   onEditProfile={handleEditProfileClick}

@@ -49,7 +49,7 @@ class Api {
 
   setLike(id) {
     return this.sendRequest({
-      path: `cards/likes/${id}`,
+      path: `cards/${id}/likes`,
       method: 'PUT',
       errorMessage: 'При попытке поставить like произошла ошибка',
     });
@@ -57,7 +57,7 @@ class Api {
 
   removeLike(id) {
     return this.sendRequest({
-      path: `cards/likes/${id}`,
+      path: `cards/${id}/likes`,
       method: 'DELETE',
       errorMessage: 'При попытке убрать like произошла ошибка',
     });
@@ -97,9 +97,8 @@ class Api {
     });
   }
 }
-
 const api = new Api({
-  baseUrl: 'http://localhost:3000/',
+  baseUrl: 'https://api.danilshvalov.mesto.nomoredomains.icu/',
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
   },

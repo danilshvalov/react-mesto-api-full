@@ -4,9 +4,11 @@ const Card = require('../models/cards');
 const NotFoundError = require('../errors/NotFoundError');
 
 module.exports.getCards = (req, res, next) => {
-  Card.find({}).populate('owners', 'likes').then((data) => {
+  // выводим сначала новые карточки
+  Card.find({}).populate('owners', 'likes').sort({createdAt: -1}).then((data) => {
     res.send(data);
-  }).catch(next);
+  })
+    .catch(next);
 };
 
 module.exports.createCard = (req, res, next) => {

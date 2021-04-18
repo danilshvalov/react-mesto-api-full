@@ -69,7 +69,7 @@ class Auth {
     });
   }
 
-  checkToken(token) {
+  checkToken() {
     const errorIdentifier = (code) => {
       if (code === 400) {
         return 'Токен авторизации не был передан или передан в неверном формате';
@@ -81,25 +81,22 @@ class Auth {
     return this.sendRequest({
       path: 'users/me',
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
       errorMessage: 'Не удалось проверить токен',
       errorIdentifier,
     });
   }
+
+  logout() {
+    return this.sendRequest({
+      path: 'logout',
+      method: 'POST',
+      errorMessage: 'Произошла непредвиденная ошибка',
+    });
+  }
 }
 
-// const auth = new Auth({
-//   baseUrl: 'https://api.danilshvalov.mesto.nomoredomains.icu/',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     'Access-Control-Allow-Origin': 'http://api.danilshvalov.mesto.nomoredomains.icu/',
-//   },
-// });
-
 const auth = new Auth({
-  baseUrl: 'http://localhost:3000/',
+  baseUrl: 'https://api.danilshvalov.mesto.nomoredomains.icu/',
   headers: {
     'Content-Type': 'application/json',
   },
