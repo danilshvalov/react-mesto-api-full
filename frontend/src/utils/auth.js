@@ -38,6 +38,8 @@ class Auth {
   register({email, password}) {
     const errorIdentifier = (code) => {
       if (code === 400) {
+        return 'Переданы некорректные данные';
+      } if (code === 409) {
         return 'Такой пользователь уже существует';
       }
     };
@@ -54,7 +56,7 @@ class Auth {
   authorize({email, password}) {
     const errorIdentifier = (code) => {
       if (code === 400) {
-        return 'Не все поля были заполнены';
+        return 'Переданы некорректные данные';
       } if (code === 401) {
         return 'Неверный email или пароль';
       }
