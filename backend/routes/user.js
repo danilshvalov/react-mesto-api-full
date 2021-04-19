@@ -3,6 +3,7 @@ const {
   profileDataValidator,
   avatarDataValidator,
 } = require('../validators/user');
+const {idValidator} = require('../validators/universal-validators');
 const {
   getAllUsers,
   getUser,
@@ -13,7 +14,7 @@ const {
 
 router.get('/', getAllUsers);
 router.get('/me', getCurrentUser);
-router.get('/:userId', getUser);
+router.get('/:userId', idValidator, getUser);
 router.patch('/me', profileDataValidator, updateProfile);
 router.patch('/me/avatar', avatarDataValidator, updateAvatar);
 

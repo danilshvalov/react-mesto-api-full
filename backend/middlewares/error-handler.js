@@ -1,7 +1,7 @@
 const {isCelebrateError} = require('celebrate');
 
 const getCelebrateErrorMessage = (err) => {
-  const errorBody = err.details.get('body');
+  const errorBody = err.details.get('body') || err.details.get('params');
   return errorBody.message;
 };
 

@@ -10,6 +10,7 @@ const {thirdPartyLibErrorHandler} = require('./utils/utils');
 const auth = require('./middlewares/auth');
 const {errorHandler} = require('./middlewares/error-handler');
 const {requestLogger, errorLogger} = require('./middlewares/logger');
+const NotFoundError = require('./errors/NotFoundError');
 
 const app = express();
 
@@ -55,8 +56,8 @@ app.use(require('./routes/auth'));
 app.use('/users', auth, require('./routes/user'));
 app.use('/cards', auth, require('./routes/cards'));
 
-app.use('*', (req, res) => {
-  res.status(404).send({message: 'Ничего не найдено. Проверьте путь и метод запроса'});
+app.use('*', (req, res, next) => {
+  next(new NotFoundError('Ничего не найдено. Проверьте путь и метод запроса'));
 });
 
 app.use(errorLogger);

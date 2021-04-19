@@ -4,3 +4,4 @@ module.exports.incorrectAbout = 'Передано некорректное оп�
 module.exports.incorrectName = 'Передано некорректное имя';
 module.exports.incorrectLink = 'Передана некорректная ссылка';
 module.exports.unAuthorized = 'Необходима авторизация';
+module.exports.incorrectId = 'Передан некорректный ID';

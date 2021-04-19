@@ -1,9 +1,8 @@
+const MiddlewareError = require('../errors/MiddlewareError');
+
 module.exports.thirdPartyLibErrorHandler = (err, req, res, next) => {
   if (err) {
-    res.status(400)
-      .send({
-        message: 'Во время обработки запроса произошла ошибка. Проверьте правильность запроса',
-      });
+    next(new MiddlewareError('Во время обработки запроса произошла ошибка. Проверьте правильность запроса'));
   } else {
     next();
   }
